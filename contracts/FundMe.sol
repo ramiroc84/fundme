@@ -3,6 +3,8 @@ pragma solidity ^0.8.7;
 
 error FundMe__NotOwner();
 error FundMe__NotEnoughMoney();
+error FundMe__OutOfIndex();
+error FundMe__NotFunder();
 
 contract FundMe {
     // hacer una lista de los funders. (direccion, apodo, cuanto dono acumulado, cuanto dono actualmente)
@@ -88,10 +90,16 @@ contract FundMe {
     }
 
     function getFunder(uint256 index) public view returns (address) {
+        if (index >= s_funders.length) {
+            revert FundMe__OutOfIndex();
+        }
         return s_funders[index];
     }
 
     function getData(address funder) public view returns (Datos memory) {
+        if (!s_funders_registry[funder].exist) {
+            revert FundMe__NotFunder();
+        }
         return s_funders_registry[funder];
     }
 }
