@@ -19,6 +19,8 @@ contract FundMe {
 
     uint256 private constant MINIMUM_ETH = 0.1 * 1e18;
     address private immutable i_owner;
+    uint256 private s_amount;
+    uint256 private s_total_amount;
     address[] private s_funders;
     mapping(address => Datos) private s_funders_registry;
 
@@ -38,6 +40,8 @@ contract FundMe {
 
     constructor() {
         i_owner = msg.sender;
+        s_amount = 0;
+        s_total_amount = 0;
     }
 
     receive() external payable {
@@ -63,6 +67,8 @@ contract FundMe {
             aux.money_total += msg.value;
             s_funders_registry[msg.sender] = aux;
         }
+        s_amount += msg.value;
+        s_total_amount += msg.value;
     }
 
     function withdraw() public payable onlyOwner {
@@ -75,6 +81,7 @@ contract FundMe {
                 s_funders_registry[direccion] = aux;
             }
         }
+        s_amount = 0;
         (bool callSuccess, ) = payable(msg.sender).call{
             value: address(this).balance
         }("");
@@ -101,5 +108,13 @@ contract FundMe {
             revert FundMe__NotFunder();
         }
         return s_funders_registry[funder];
+    }
+
+    function getAmount() public view returns (uint256) {
+        return s_amount;
+    }
+
+    function getTotalAmount() public view returns (uint256) {
+        return s_total_amount;
     }
 }
