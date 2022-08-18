@@ -9,7 +9,7 @@ html{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow:hidden;
+    overflow: hidden;
    
     font-family: 'Roboto', sans-serif;
 
@@ -30,14 +30,41 @@ const Seccion = styled.div`
   position: relative;
 `;
 
-const ContenedorImagenes
+const ContenedorImagenes = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  background-color: limegreen;
+  width: 100%;
+  height: 40vh;
+  top: 50%;
+  transform: translateY(-50%);
+`;
+
+const Imagen = styled.div`
+  width: 25%;
+  height: 100%;
+  margin: 0 2rem 0 0;
+  background-color: pink;
+  &:first-of-type {
+    margin-left: 2rem;
+  }
+`;
 
 function App() {
   return (
     <>
       <GlobalStyle />
 
-      <Seccion>FUNDME</Seccion>
+      <Seccion>
+        <ContenedorImagenes>
+          <Imagen></Imagen>
+          <Imagen></Imagen>
+          <Imagen></Imagen>
+          <Imagen></Imagen>
+        </ContenedorImagenes>
+      </Seccion>
     </>
   );
 }
