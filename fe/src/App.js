@@ -1,5 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 
+import ConnectBox from "./components/ConnectBox";
+
 const GlobalStyle = createGlobalStyle`
 html{
   overflow:hidden;
@@ -58,6 +60,7 @@ function App() {
       <GlobalStyle />
 
       <Seccion>
+        <ConnectBox></ConnectBox>
         <ContenedorImagenes>
           <Imagen></Imagen>
           <Imagen></Imagen>
