@@ -1,0 +1,31 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-forward" viewBox="0 0 20 20">
+<path d="M12 11.874v4.357l7-6.69-7-6.572v3.983c-8.775 0-11 9.732-11 9.732 2.484-4.388 6.237-4.81 11-4.81z"></path>
+</symbol>
+<symbol id="icon-level-down" viewBox="0 0 20 20">
+<path d="M1 12v-7h3v6h10v-3l5 4.5-5 4.5v-3h-11c-1.105 0-2-0.896-2-2z"></path>
+</symbol>
+<symbol id="icon-level-up" viewBox="0 0 20 20">
+<path d="M19 9v7h-3v-6h-10v3l-5-4.5 5-4.5v3h11c1.104 0 2 0.897 2 2z"></path>
+</symbol>
+<symbol id="icon-undo" viewBox="0 0 32 32">
+<path d="M16 2c-4.418 0-8.418 1.791-11.313 4.687l-4.686-4.687v12h12l-4.485-4.485c2.172-2.172 5.172-3.515 8.485-3.515 6.627 0 12 5.373 12 12 0 3.584-1.572 6.801-4.063 9l2.646 3c3.322-2.932 5.417-7.221 5.417-12 0-8.837-7.163-16-16-16z"></path>
+</symbol>
+<symbol id="icon-redo" viewBox="0 0 32 32">
+<path d="M0 18c0 4.779 2.095 9.068 5.417 12l2.646-3c-2.491-2.199-4.063-5.416-4.063-9 0-6.627 5.373-12 12-12 3.314 0 6.314 1.343 8.485 3.515l-4.485 4.485h12v-12l-4.687 4.687c-2.895-2.896-6.895-4.687-11.313-4.687-8.837 0-16 7.163-16 16z"></path>
+</symbol>
+<symbol id="icon-undo2" viewBox="0 0 32 32">
+<path d="M23.808 32c3.554-6.439 4.153-16.26-9.808-15.932v7.932l-12-12 12-12v7.762c16.718-0.436 18.58 14.757 9.808 24.238z"></path>
+</symbol>
+<symbol id="icon-redo2" viewBox="0 0 32 32">
+<path d="M18 7.762v-7.762l12 12-12 12v-7.932c-13.961-0.328-13.362 9.493-9.808 15.932-8.772-9.482-6.909-24.674 9.808-24.238z"></path>
+</symbol>
+<symbol id="icon-forward1" viewBox="0 0 32 32">
+<path d="M8.192 0c-3.554 6.439-4.153 16.259 9.808 15.932v-7.932l12 12-12 12v-7.762c-16.718 0.436-18.58-14.757-9.808-24.238z"></path>
+</symbol>
+<symbol id="icon-reply" viewBox="0 0 32 32">
+<path d="M14 24.238v7.762l-12-12 12-12v7.932c13.961 0.327 13.362-9.493 9.808-15.932 8.772 9.482 6.909 24.674-9.808 24.238z"></path>
+</symbol>
+</defs>
+</svg>
