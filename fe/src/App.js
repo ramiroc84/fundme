@@ -4,13 +4,14 @@ import styled, { createGlobalStyle } from "styled-components";
 import ConnectBox from "./components/ConnectBox";
 import Hero from "./components/Hero";
 import TopTenBox from "./components/TopTenBox";
+import TransferBox from "./components/TransferBox";
 
 const GlobalStyle = createGlobalStyle`
 html{
   overflow:hidden;
 }
   body {
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -31,7 +32,7 @@ html{
 const Seccion = styled.div`
   height: 100vh;
   width: 100%;
-  background-color: orange;
+  /* background-color: orange; */
   position: relative;
 `;
 
@@ -57,6 +58,17 @@ const Seccion = styled.div`
 //   }
 // `;
 
+const arrayPrueba = [
+  { name: "ANON", qty: 300 },
+  { name: "MARK", qty: 10 },
+  { name: "ANON", qty: 5 },
+  { name: "JOE", qty: 5 },
+  { name: "SARA", qty: 4 },
+  { name: "ANON", qty: 3 },
+  { name: "ANON", qty: 2 },
+  { name: "BRENT", qty: 1 },
+];
+
 function App() {
   const [connected, setConnected] = useState(false);
 
@@ -81,7 +93,8 @@ function App() {
           <Imagen></Imagen>
           <Imagen></Imagen>
         </ContenedorImagenes> */}
-        <TopTenBox></TopTenBox>
+        <TopTenBox fundersArray={arrayPrueba}></TopTenBox>
+        <TransferBox connected={connected} owner={true}></TransferBox>
       </Seccion>
       {/* <Seccion></Seccion> */}
     </>

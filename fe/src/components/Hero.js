@@ -23,7 +23,7 @@ const HeroImage = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  filter: grayscale() blur(0.2px);
+  filter: grayscale() blur(0.1px);
 `;
 
 const PieImagen = styled.div`
@@ -44,6 +44,16 @@ const Titulo = styled.div`
   z-index: 10;
   color: white;
   text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.29);
+
+  @media (max-width: 900px) {
+    /* width: 50%; */
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 70px;
+    white-space: nowrap;
+    text-align: center;
+  }
 `;
 
 const Subtitulo = styled.div`
@@ -55,6 +65,15 @@ const Subtitulo = styled.div`
   z-index: 10;
   color: white;
   text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.29);
+  @media (max-width: 900px) {
+    /* width: 50%; */
+    top: 190px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 19px;
+    text-align: center;
+    /* white-space: nowrap; */
+  }
 `;
 
 const Hero = () => {
