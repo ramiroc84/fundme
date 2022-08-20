@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import { ethers } from "ethers";
 
 import ConnectBox from "./components/ConnectBox";
 import Hero from "./components/Hero";
 import TopTenBox from "./components/TopTenBox";
 import TransferBox from "./components/TransferBox";
+
+import { abi, contractAddress } from "./constants";
 
 const GlobalStyle = createGlobalStyle`
 html{
@@ -71,10 +74,92 @@ const arrayPrueba = [
 
 function App() {
   const [connected, setConnected] = useState(false);
+  const [currentAccount, setCurrentAccount] = useState("");
+  const [isOwner, setIsOwner] = useState(false);
+  const [chainName, setChainName] = useState("");
 
-  const connect = () => {
-    setConnected((prev) => !prev);
+  // const connect = () => {
+  //   setConnected((prev) => !prev);
+  // };
+
+  const onClickConnect = () => {
+    if (!window.ethereum) {
+      console.log("please install MetaMask");
+      return;
+    }
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    // MetaMask requires requesting permission to connect users accounts
+    provider
+      .send("eth_requestAccounts", [])
+      .then((accounts) => {
+        if (accounts.length > 0) setCurrentAccount(accounts[0]);
+        // if (currentAccount === ownerAddress) {
+        //   setOwner(true);
+        // }
+      })
+      .catch((e) => console.log(e));
   };
+
+  const onClickDisconnect = () => {
+    setConnected(false);
+    // setChainId(null);
+    setChainName("");
+    setCurrentAccount(undefined);
+    setIsOwner(false);
+    // setOwnerAddress("");
+    // setInput("");
+  };
+
+  useEffect(() => {
+    setConnected(false);
+    if (!currentAccount || !ethers.utils.isAddress(currentAccount)) return;
+
+    if (!window.ethereum) return;
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    provider.getNetwork().then((result) => {
+      // setChainId(result.chainId);
+      setChainName(result.name);
+      setConnected(true);
+      const signer = provider.getSigner();
+
+      const contract = new ethers.Contract(contractAddress, abi, signer);
+      contract.getOwner().then((own) => {
+        // setOwnerAddress(own);
+        if (currentAccount.toLowerCase() === own.toLowerCase()) {
+          setIsOwner(true);
+        } else {
+          setIsOwner(false);
+        }
+      });
+      // contract.getPalabra().then((palabra) => {
+      //   setPalabra(palabra);
+      // });
+    });
+  }, [currentAccount]);
+
+  useEffect(() => {
+    if (!window.ethereum) return;
+
+    const accountWasChanged = (accounts) => {
+      setCurrentAccount(accounts[0]);
+    };
+
+    const clearAccount = () => {
+      onClickDisconnect();
+      console.log("clearAccount");
+    };
+    window.ethereum.on("accountsChanged", accountWasChanged);
+    // window.ethereum.on("connect", getAndSetAccount);
+    window.ethereum.on("disconnect", clearAccount);
+
+    return () => {
+      window.ethereum.removeListener("accountsChanged", accountWasChanged);
+      window.ethereum.removeListener("disconnect", clearAccount);
+    };
+  }, []);
 
   return (
     <>
@@ -83,10 +168,11 @@ function App() {
       <Seccion>
         <ConnectBox
           connected={connected}
-          address={"0xEA674fdDe714fd979de3EdF0F56AA9716B898ec8"}
-          manageConnection={connect}
+          address={currentAccount}
+          manageConnect={onClickConnect}
+          manageDisonnect={onClickDisconnect}
         ></ConnectBox>
-        <Hero></Hero>
+        <Hero chainName={chainName}></Hero>
         {/* <ContenedorImagenes>
           <Imagen></Imagen>
           <Imagen></Imagen>

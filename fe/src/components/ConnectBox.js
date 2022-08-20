@@ -118,12 +118,12 @@ const Hint = styled.div`
   }
 `;
 
-const ConnectBox = ({ connected, address, manageConnection }) => {
+const ConnectBox = ({ connected, address, manageConnect, manageDisonnect }) => {
   return (
     <Contenedor>
       {connected ? (
         <>
-          <Boton backgroundColor={"#F65A83"} onClick={manageConnection}>
+          <Boton backgroundColor={"#F65A83"} onClick={manageDisonnect}>
             <EtiquetaBoton>disconnect</EtiquetaBoton>
           </Boton>
           <EtiquetaDireccion>{address}</EtiquetaDireccion>
@@ -144,7 +144,7 @@ const ConnectBox = ({ connected, address, manageConnection }) => {
           <Flecha>
             <use href={flechas_sprite + "#icon-forward1"} />
           </Flecha>
-          <Boton onClick={manageConnection}>
+          <Boton onClick={manageConnect}>
             <EtiquetaBoton>connect</EtiquetaBoton>
           </Boton>
         </>

@@ -18,6 +18,7 @@ const Contenedor = styled.div`
   border-radius: 7px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   @media (max-width: 900px) {
+    justify-content: center;
     width: 100%;
     top: 130px;
     left: 50%;
@@ -84,6 +85,10 @@ const Unidad = styled.div`
   bottom: 15px;
   left: 107px;
   color: #222222;
+  @media (max-width: 900px) {
+    left: 311px;
+    /* white-space: nowrap; */
+  }
 `;
 
 const TransferBox = ({ connected, owner }) => {

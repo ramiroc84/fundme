@@ -76,7 +76,7 @@ const Subtitulo = styled.div`
   }
 `;
 
-const Hero = () => {
+const Hero = ({ chainName }) => {
   return (
     <>
       <Contenedor>
@@ -88,7 +88,7 @@ const Hero = () => {
           help them
         </Titulo>
         <HeroImage>
-          <PieImagen>stray dogs</PieImagen>
+          <PieImagen>connected to {chainName}</PieImagen>
         </HeroImage>
       </Contenedor>
     </>
