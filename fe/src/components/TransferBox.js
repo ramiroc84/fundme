@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 // import flechas_sprite from "../svg/flechas.svg";
@@ -91,28 +91,43 @@ const Unidad = styled.div`
   }
 `;
 
-const TransferBox = ({ connected, owner }) => {
+const TransferBox = ({ owner, handleFund, handleWithdraw }) => {
+  const [inputValue, setInputValue] = useState("");
+  const [inputName, setInputName] = useState("");
+
+  const handleInputValueChange = (e) => {
+    const { value } = e.target;
+    setInputValue(value);
+  };
+  // --------------------------------> caja de texto para el nombre
   return (
-    <>
-      {connected ? (
-        <Contenedor>
-          <InputBox pattern="[0-9]+([\.,][0-9]+)?"></InputBox>
-          <Unidad>eth</Unidad>
-          <Boton>
-            <EtiquetaBoton>donate</EtiquetaBoton>
-          </Boton>
-          {owner ? (
-            <Boton backgroundColor={"#F65A83"}>
-              <EtiquetaBoton>withdraw</EtiquetaBoton>
-            </Boton>
-          ) : (
-            <></>
-          )}
-        </Contenedor>
+    <Contenedor>
+      <InputBox
+        pattern="[0-9]+([\.,][0-9]+)?"
+        // type="text"
+        // placeholder="change it for 0.1 ETH"
+        required
+        // pattern="[a-zd.]{5,}"
+        // disabled={!conectado || cargando ? true : false}
+        onChange={handleInputValueChange}
+        value={inputValue}
+      ></InputBox>
+      <Unidad>eth</Unidad>
+      <Boton
+        onClick={() => {
+          handleFund("USR1235", inputValue);
+        }}
+      >
+        <EtiquetaBoton>donate</EtiquetaBoton>
+      </Boton>
+      {owner ? (
+        <Boton backgroundColor={"#F65A83"} onClick={handleWithdraw}>
+          <EtiquetaBoton>withdraw</EtiquetaBoton>
+        </Boton>
       ) : (
         <></>
       )}
-    </>
+    </Contenedor>
   );
 };
 

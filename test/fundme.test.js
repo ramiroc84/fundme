@@ -10,7 +10,7 @@ describe("FundMe", function () {
   });
 
   describe("fund", () => {
-    it("fails if the ammount is less than 0.1", async () => {
+    it("fails if the amount is less than 0.1", async () => {
       const funderWithNoMoney = accounts[1];
       const funderWithNoMoneyConnectedContract = await fundMe.connect(
         funderWithNoMoney

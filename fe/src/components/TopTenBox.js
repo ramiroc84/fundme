@@ -85,8 +85,8 @@ const TopTenBox = ({ fundersArray, symbol }) => {
               <Unidad> eth</Unidad>
             </Cantidad>
           </TopFunderElem>
-          {fundersArray.map((elem) => (
-            <FunderElem>
+          {fundersArray.map((elem, index) => (
+            <FunderElem key={index}>
               <Nombre>{elem.name.toLowerCase()} </Nombre>
               <Cantidad>
                 {elem.qty}

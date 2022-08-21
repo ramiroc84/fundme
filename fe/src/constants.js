@@ -1,3 +1,5 @@
+export const chainId = 31337; // hardhat
+// export const chainId = 5; // goerli
 export const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; //goerli
 
 export const abi = [
