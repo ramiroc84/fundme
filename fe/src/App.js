@@ -58,6 +58,7 @@ function App() {
   const [chainName, setChainName] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
   const [loading, setLoading] = useState(false);
+
   // const [input, setInput] = useState("");
 
   const onClickConnect = () => {
@@ -200,9 +201,9 @@ function App() {
         //console.log(funder_0);
         //console.log(funder_1);
 
-        setLoading(false);
         setTotalAmount(ethers.utils.formatEther(newAmount));
         // setInput("");
+        setLoading(false);
       } catch (e) {
         console.log(e);
         setLoading(false);
@@ -236,7 +237,7 @@ function App() {
           handleDisonnect={onClickDisconnect}
         />
         <Hero chainName={chainName} />
-        <TotalAmount amount={totalAmount} />
+        {connected && <TotalAmount amount={totalAmount} />}
         {/* // --------------------------------> pasar array verdadero */}
         {connected && <TopTenBox fundersArray={arrayPrueba} />}
         {connected && (
